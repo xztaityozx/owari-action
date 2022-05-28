@@ -5,7 +5,7 @@ version: '3'
 tasks:
   default:
     cmds:
-      - docker run --rm xztaityozx/owari-action {{.CLI_ARGS}}
+      - docker run --rm xztaityozx/owari-action false {{.CLI_ARGS}}
 
   build:
     cmds:
@@ -18,5 +18,5 @@ tasks:
   test:
     deps: [build]
     cmds:
-      - if [[ "$(echo {{.CLI_ARGS}} | sha256sum)" == "23bc7618122252f4e2f5ea6f42993c6bcb2868b7422037f9df944c6a876d3793  -" ]] then echo ok; fi
+      - if [[ "$(echo {{.CLI_ARGS}} | sha256sum)" != "23bc7618122252f4e2f5ea6f42993c6bcb2868b7422037f9df944c6a876d3793  -" ]] then exit 1; fi
 
