@@ -10,15 +10,14 @@ jobs:
       - uses: arduino/setup-task@v1
 
       - name: Test
-        run: task test -- "$(task -sc=false)"
+        run: task test -- "$(task -s c=false)"
 
       - uses: ./
         id: owari
 
       - name: Checking output
         run: |
-          task test -- "${{steps.owari.outputs.content}}"
-
+          task test -- "$(echo -e '${{steps.owari.outputs.content}}')"
 
   example:
     needs: [test]
