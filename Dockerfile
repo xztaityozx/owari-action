@@ -7,6 +7,8 @@ RUN tar xzf ./owari_${OWARI_VERSION}_Linux_x86_64.tar.gz
 
 FROM debian:stable-slim as runner
 COPY --from=download /owari /
+
+ADD .git/index /data/
 COPY entry-point.sh /entry-point.sh
 
 ENTRYPOINT ["/entry-point.sh"]
