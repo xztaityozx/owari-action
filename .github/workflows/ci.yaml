@@ -1,0 +1,12 @@
+Name: CI
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: arduino/setup-task@v1
+      - name: Run Test
+        run: task test
