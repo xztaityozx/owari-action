@@ -2,6 +2,9 @@
 
 version: '3'
 
+env:
+  SHA_DEFAULT_OUTPUT: ./assets/sha-default
+
 tasks:
   default:
     cmds:
@@ -18,7 +21,7 @@ tasks:
   test:
     deps: [build]
     cmds:
-      - if [[ "$(echo {{.CLI_ARGS}} | sha256sum)" != "23bc7618122252f4e2f5ea6f42993c6bcb2868b7422037f9df944c6a876d3793  -" ]] then exit 1; fi
+      - if ! echo {{.CLI_ARGS}} | sha256sum -c {{.SHA_DEFAULT_OUTPUT}}; then exit 1; fi
 
   act:
     preconditions:
