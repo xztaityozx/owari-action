@@ -1,0 +1,15 @@
+name: 'owari-action'
+description: xztaityozx/owariを使って終わりをお知らせするactionです
+inputs:
+  args:
+    description: owariコマンドへの引数です
+    default: 'default'
+  as-summary:
+    description: owariコマンドの出力をstepのSummaryとして出力します
+    default: false
+runs:
+  using: docker
+  image: Dockerfile
+  args:
+    - ${{ inputs.as-summary }}
+    - ${{ inputs.args }}
