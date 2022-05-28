@@ -7,6 +7,9 @@ inputs:
   as-summary:
     description: owariコマンドの出力をstepのSummaryとして出力します
     default: false
+outputs:
+  content:
+    description: owariコマンドの出力結果です
 runs:
   using: docker
   image: Dockerfile
