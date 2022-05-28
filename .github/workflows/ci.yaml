@@ -17,7 +17,6 @@ jobs:
           task test -- "$(echo -e '${{steps.owari.outputs.content}}')"
 
   example:
-    needs: [test]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -39,3 +38,13 @@ jobs:
         with:
           args: 'kanban -a xztaityozx "これは スペースが 含まれている 文字列"'
 
+  owari:
+    needs: [example, build]
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./
+        with:
+          as-summary: true
+          args: 'kanban -ga \"GitHub Actions\"  "${{github.sha}}のテストは${{ job.status }}だったよ"'
