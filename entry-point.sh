@@ -4,7 +4,7 @@ AS_STEP_SUMMARY="$1"
 shift
 
 if [[ "$AS_STEP_SUMMARY" == "true" ]]; then
-  (echo '```'; /owari -E=false $@; echo '```') >> $GITHUB_STEP_SUMMARY
+  (echo '```'; eval /owari -E=false "$@"; echo '```') >> $GITHUB_STEP_SUMMARY
 else
-  /owari $@
+  eval /owari "$@"
 fi
