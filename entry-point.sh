@@ -1,12 +1,10 @@
-#!/bin/bash -x
-
-echo "$@"
+#!/bin/bash
 
 AS_STEP_SUMMARY="$1"
 shift
 
 if [[ "$AS_STEP_SUMMARY" == "true" ]]; then
-  /owari "$@" >> $GITHUB_STEP_SUMMARY
+  /owari $@ >> $GITHUB_STEP_SUMMARY
 else
-  /owari "$@"
+  /owari $@
 fi
