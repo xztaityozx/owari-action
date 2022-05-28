@@ -7,6 +7,10 @@ tasks:
     cmds:
       - docker build -t xztaityozx/owari-action ./
 
+  rebuild:
+    cmds:
+      - docker build --no-cache -t xztaityozx/owari-action ./
+
   test:
     deps: [build]
     cmds:
