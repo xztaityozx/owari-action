@@ -1,12 +1,12 @@
 #!/bin/bash
 
-AS_STEP_SUMMARY="${AS_STEP_SUMMARY:-false}"
+OWARI_AS_STEP_SUMMARY="${OWARI_AS_STEP_SUMMARY:-false}"
 OWARI_ENABLE_OUTPUT="${OWARI_ENABLE_OUTPUT:-false}"
 
 TMP_FILE=/tmp/owari.$RANDOM
 eval /owari "$@" > $TMP_FILE
 
-if [[ "$AS_STEP_SUMMARY" == "true" ]]; then
+if [[ "$OWARI_AS_STEP_SUMMARY" == "true" ]]; then
   (echo '```'; cat $TMP_FILE echo '```') >> $GITHUB_STEP_SUMMARY
 else
   cat $TMP_FILE
