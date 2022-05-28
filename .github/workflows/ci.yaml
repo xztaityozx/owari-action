@@ -47,4 +47,4 @@ jobs:
       - uses: ./
         with:
           as-summary: true
-          args: 'kanban -ga \"GitHub Actions\"  "${{github.sha}}のテストは${{ job.status }}だったよ"'
+          args: 'kanban -ga \"GitHub Actions\"  \"${{github.sha}}のテストは${{ job.status }}だったよ\"'
