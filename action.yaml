@@ -3,7 +3,7 @@ description: xztaityozx/owariを使って終わりをお知らせするactionで
 inputs:
   args:
     description: owariコマンドへの引数です
-    default: 'default'
+    default: 'default -a ${{github.repository}}'
   as-summary:
     description: owariコマンドの出力をstepのSummaryとして出力します
     default: false
