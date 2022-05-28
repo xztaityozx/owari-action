@@ -8,9 +8,26 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: arduino/setup-task@v1
+
       - name: Run Test
         run: task test
 
-      - uses: ./
+  example:
+    needs: [test]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: default
+        uses: ./
+
+      - name: owari kanban
+        uses: ./
         with:
           args: 'kanban -a xztaityozx owari-action'
+
+      - name: as job summary
+        uses: ./
+        with:
+          as-summary: true
+
