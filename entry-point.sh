@@ -1,7 +1,7 @@
 #!/bin/bash
 
-AS_STEP_SUMMARY="$1"
-shift
+AS_STEP_SUMMARY="${AS_STEP_SUMMARY:-false}"
+OWARI_ENABLE_OUTPUT="${OWARI_ENABLE_OUTPUT:-false}"
 
 TMP_FILE=/tmp/owari.$RANDOM
 eval /owari "$@" > $TMP_FILE
@@ -12,7 +12,7 @@ else
   cat $TMP_FILE
 fi
 
-if [[ -z "GITHUB_ACTIONS" ]]; then
+if [[ "$OWARI_ENABLE_OUTPUT" == "true" ]]; then
   OUTPUT=$(cat $TMP_FILE)
   echo "::set-output name=content::${OUTPUT//$'\n'/\\n}"
 fi

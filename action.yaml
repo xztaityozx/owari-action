@@ -13,6 +13,8 @@ outputs:
 runs:
   using: docker
   image: Dockerfile
+  env:
+    AS_STEP_SUMMARY: ${{inputs.as-summary}}
+    OWARI_ENABLE_OUTPUT: true
   args:
-    - ${{ inputs.as-summary }}
     - ${{ inputs.args }}
