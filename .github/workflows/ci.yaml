@@ -10,3 +10,7 @@ jobs:
       - uses: arduino/setup-task@v1
       - name: Run Test
         run: task test
+
+      - uses: ./
+        with:
+          args: 'kanban -a xztaityozx owari-action'
