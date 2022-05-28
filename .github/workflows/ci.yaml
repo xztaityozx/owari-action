@@ -31,3 +31,7 @@ jobs:
         with:
           as-summary: true
 
+      - uses: ./
+        with:
+          args: 'kanban -a xztaityozx "これは スペースが 含まれている 文字列"'
+
