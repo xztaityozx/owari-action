@@ -18,3 +18,6 @@ runs:
     OWARI_ENABLE_OUTPUT: true
   args:
     - ${{ inputs.args }}
+branding:
+  icon: message-circle
+  color: white
